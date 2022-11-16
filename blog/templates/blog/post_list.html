@@ -20,6 +20,11 @@
                 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <p>{{ post.text|linebreaksbr }}</p>
             </div>
+        {% block footer %}
+        <p class='text-muted'>
+            Количество посещений данной страницы: {{num_visits}}
+        </p>
+        {% block footer %}{% endblock %}
         {% endfor %}
         {% endblock %}
     </body>
