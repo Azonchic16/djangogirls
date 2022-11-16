@@ -18,17 +18,20 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
   <div class="page-header">
     <h1>
         <a href="/">Мой блог</a>
-        <a href="{% url 'post_new' %}"><i class="bi-plus"></i></a>
+        <a href="{%url 'post_new'%}"> <i class="bi-plus"></i></a>
     </h1>
-
   </div>
+  </nav>
+  </div>
+  <nav class="navbar navbar-expand-lg bg-light">
   <div class="content container">
     <div class="row">
       <div class="col-md-8">
-        <a href="{%url 'post_new'%}"> <i class="bi-plus"></i></a>
         {%if user.get_username %} 
           <spanclass>{{user.get_username}}</spanclass>
           <a href="{%url 'logout'%}" class="ms-2">Выход</a>
@@ -39,6 +42,7 @@
         {%endblock%}
         {% block footer %}{% endblock %}
       </div>
+    </nan>
     </div>
   </div>
 </body>
