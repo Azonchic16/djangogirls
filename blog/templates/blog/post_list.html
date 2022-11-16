@@ -6,6 +6,12 @@
         <title>Мой блог</title>
     </head>
     <body>
+        {% block footer %}
+        <p class='text-muted'>
+            Количество посещений данной страницы: {{num_visits}}
+        </p>
+        {% endblock %}
+        {% endfor %}
         <div class="page-header"></div>
             <h1><a href="/">Мой блог</a></h1>
         <div>
@@ -20,11 +26,6 @@
                 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <p>{{ post.text|linebreaksbr }}</p>
             </div>
-        {% block footer %}
-        <p class='text-muted'>
-            Количество посещений данной страницы: {{num_visits}}
-        </p>
-        {% endblock %}
         {% endfor %}
         {% endblock %}
     </body>
