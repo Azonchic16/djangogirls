@@ -18,32 +18,46 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container">
   <div class="page-header">
-    <h1>
-        <a href="/">Мой блог</a>
-        <a href="{%url 'post_new'%}"> <i class="bi-plus"></i></a>
-    </h1>
+    <nav class="navbar navbar-expand-lg bg-light">
+
+      <div class="container">
+        <a class="navbar-brand" href="/">Мой блог</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            {%if user.get_username %}
+            <ul class='navbar-nav w-100'>
+              <li><a href="{%url 'post_new'%}"> <i class="bi-plus"> Добавить пост </i></a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><span>{{user.get_username}}</span>
+               <a href="{%url 'logout'%}" class="ms-2">Выход</a> </li>
+            </ul>
+            {%else%}
+            <ul>
+              <li class="nav-item"><a href="{%url 'login'%}" class="ms-2">Вход</a></li>
+            </ul>{%endif%}
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
-  </nav>
   </div>
-  <nav class="navbar navbar-expand-lg bg-light">
   <div class="content container">
     <div class="row">
       <div class="col-md-8">
-        {%if user.get_username %} 
-          <spanclass>{{user.get_username}}</spanclass>
-          <a href="{%url 'logout'%}" class="ms-2">Выход</a>
-        {%else%}
-          <a href="{%url 'login'%}" class="ms-2">Вход</a>
-        {%endif%}
+      <div class="container">
         {%block content%}
         {%endblock%}
+      </div>
+      <div class="container">
         {% block footer %}{% endblock %}
       </div>
-    </nan>
     </div>
+
   </div>
 </body>
 

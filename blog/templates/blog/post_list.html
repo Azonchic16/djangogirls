@@ -1,34 +1,13 @@
 {% extends 'blog/base.html' %}
 {% load static %}
-<html>
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <head>
-        <title>Мой блог</title>
-    </head>
-    <body>
-        <div class="page-header"></div>
-            <h1><a href="/">Мой блог</a></h1>
-        <div>
-
-        {% block content %}
-        {% for post in posts %}
-            <div class="post">
-                <div class="date">
-                    Опубликовано:
-                    {{ post.published_date }}
-                </div>
-                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaksbr }}</p>
-            </div>
-        {% endfor %}
-        {% endblock %}
-
-        {% block footer %}
-        НИЯУ МИФИ &middot; &copy; 2022
-            <p class='text-muted'>
-            Количество посещений данной страницы: {{num_visits}}
-            </p>
-        {% endblock %}
-
-    </body>
-</html>
+{% block content %}
+{% for post in posts %}
+{% include 'blog/post.html' with post=post %}
+{% endfor %}
+{% endblock %}
+{% block footer %}
+    НИЯУ МИФИ &middot; &copy; 2022
+        <p class='text-muted'>
+        Количество посещений данной страницы: {{num_visits}}
+        </p>
+{% endblock %}
