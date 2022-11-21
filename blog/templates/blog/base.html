@@ -18,7 +18,6 @@
 </head>
 
 <body>
-  <div class="page-header">
     <nav class="navbar navbar-expand-lg bg-light">
 
       <div class="container">
@@ -30,26 +29,29 @@
           <div class="navbar-nav">
             {%if user.get_username %}
             <ul class='navbar-nav w-100'>
-              <li><a href="{%url 'post_new'%}"> <i class="bi-plus"> Добавить пост </i></a></li>
+              <li class="nav-link">
+                <a href="{%url 'post_new'%}" class="ms-2"><i class="bi-plus"></i>Добавить пост</a>
+              </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><span>{{user.get_username}}</span>
-               <a href="{%url 'logout'%}" class="ms-2">Выход</a> </li>
+              <li>
+                <class="nav-text">{{user.get_username}}
+              </li>
+              <li>
+               <a href="{%url 'logout'%}" class="ms-2">Выход</a>
+              </li>
             </ul>
             {%else%}
-            <ul>
-              <li class="nav-item"><a href="{%url 'login'%}" class="ms-2">Вход</a></li>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a href="{%url 'login'%}" class="ms-2">Вход</a></li>
             </ul>{%endif%}
           </div>
         </div>
       </div>
-    </nav>
   </div>
-  </div>
-  <div class="content container">
-    <div class="row">
-      <div class="col-md-8">
-      <div class="container">
+  </nav>
+  <div class="container">
         {%block content%}
         {%endblock%}
       </div>
