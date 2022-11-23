@@ -1,16 +1,24 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="post">
+<nav class="navbar navbar -expand-lg bg-light">
+<div class="container">
+</nav>
+    <div class="card my-2">
+        <div class="card-body">
+    <h1 class="card-title">
+        <a class="nav-text">{{ post.title }}</a>
+    </h1>
+        <p>{{ post.text|linebreaksbr }}</p>
         <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}">
-            <i class="bi-pencil-square"></i>
+            <i class="bi-pencil-square"> Редактировать </i>
         </a>
         {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-        {% endif %}
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.text|linebreaksbr }}</p>
+            <div class="card-footer">{{ post.published_date }}</div>
+        </div>
+        {%endif%}
     </div>
+    </div>
+    </div>
+</div>
 {% endblock %}

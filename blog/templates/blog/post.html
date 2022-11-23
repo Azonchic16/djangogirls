@@ -1,6 +1,8 @@
 <div class="card">
     <div class="card-header">
-        <a href="{%url 'post_detail' pk=post.pk %}" class="nav-link">{{ post.title }}</a>
+        <h1 class="card-title">
+            <a class="nav-text" href="{%url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+        </h1>
     </div>
     <div class="card-body">
         <p class="card-text">{{ post.text|linebreaksbr }}</p>
